@@ -4,10 +4,10 @@ import { ICrud } from "./crud.interface";
 
 export class DatabaseService <T extends Base> implements ICrud<T> {
 
-  table: string;
+  private table: string;
   private supabaseUrl: string;
   private supabaseKey: string;
-  private supabase: SupabaseClient
+  public supabase: SupabaseClient
 
   private  _getPagination = (page, size) => {
     const limit = size ? +size : 3

@@ -7,4 +7,16 @@ import { DatabaseService } from './database.service';
 })
 export class UsersService extends DatabaseService<User>{
   constructor() { super('users'); }
+
+  async singUp(email: string, password: string ){
+    let { data, error} = await this.supabase.auth.signUp({ email, password });
+
+    return { data, error };
+  }
+
+  async singIn(email: string, password: string ){
+    let { data, error} = await this.supabase.auth.signInWithPassword({ email, password });
+
+    return { data, error };
+  }
 }

@@ -23,7 +23,10 @@
     "@nebular/eva-icons": "7.0.5",
     "@nebular/theme": "^7.0.5",
     "@supabase/supabase-js": "^2.10.0",
+    "bootstrap": "^5.2.3",
+    "bootswatch": "^5.2.3",
     "eva-icons": "^1.1.2",
+    "ngx-spinner": "^11.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

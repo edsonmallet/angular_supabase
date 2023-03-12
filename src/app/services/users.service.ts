@@ -10,13 +10,11 @@ export class UsersService extends DatabaseService<User>{
 
   async singUp(email: string, password: string ){
     let { data, error} = await this.supabase.auth.signUp({ email, password });
-
     return { data, error };
   }
 
   async singIn(email: string, password: string ){
     let { data, error} = await this.supabase.auth.signInWithPassword({ email, password });
-
     return { data, error };
   }
 }

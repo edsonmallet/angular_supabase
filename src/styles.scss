@@ -10,4 +10,7 @@
   @include nb-theme-global();
 };
 
-
+:host nb-layout-header {
+  background: 'red';
+  color: $body-bg;
+}

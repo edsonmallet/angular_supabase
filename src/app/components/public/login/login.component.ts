@@ -7,27 +7,26 @@ import { UsersService } from 'src/app/services/users.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   email: string;
   password: string;
   message: string;
-  form: FormGroup
+  form: FormGroup;
 
   constructor(
     private spinner: NgxSpinnerService,
     private fb: FormBuilder,
     private userService: UsersService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: ['',  [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
-    })
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
   }
 
   login() {
@@ -35,19 +34,17 @@ export class LoginComponent implements OnInit {
     const email = this.form.get('email').value;
     const password = this.form.get('password').value;
 
-    this.userService.singIn(email,password).then(
+    this.userService.singIn(email, password).then(
       (data) => {
-        console.log(data)
         this.spinner.hide();
-        this.router.navigate(['/home']);
-        localStorage.setItem('token', data.data.session.access_token);
+        this.router.navigateByUrl('/admin/dashboard');
+        localStorage.setItem('@app-stock:auth', JSON.stringify(data.data));
       },
       (error) => {
-        console.log(error)
+        console.log(error);
         this.spinner.hide();
         this.message = error.error.message;
       }
-    )
+    );
   }
-
 }

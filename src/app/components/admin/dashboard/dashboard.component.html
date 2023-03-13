@@ -1,0 +1,16 @@
+<nb-layout class="bg-color">
+  <nb-layout-header fixed>
+    <h3>APP Stock</h3>
+    <button (click)="toggleSidebar()" class="btn btn-primary">X</button>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+
+  <nb-layout-footer>Contact us</nb-layout-footer>
+
+  <nb-sidebar tag="menu-main" state="expanded">
+    <nb-menu [items]="itens" autoCollapse="true"></nb-menu>
+  </nb-sidebar>
+</nb-layout>

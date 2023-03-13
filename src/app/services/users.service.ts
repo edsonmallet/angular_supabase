@@ -17,4 +17,12 @@ export class UsersService extends DatabaseService<User>{
     let { data, error} = await this.supabase.auth.signInWithPassword({ email, password });
     return { data, error };
   }
+
+  async singOut(){
+    return await this.supabase.auth.signOut();
+  }
+
+  async isLogged(){
+    return await this.supabase.auth.getUser();
+  }
 }
